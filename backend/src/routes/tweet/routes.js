@@ -47,13 +47,12 @@ router.get('/hashtag/:name/locations', async (req, res) => {
     }
     const { data } = await clientTwitterV2('get', 'tweets/search/recent', config)
     const postsLocationsId = data.data.filter(x => x.geo)
-    console.log(postsLocationsId)
 
     const locations = []
 
     for (let location of postsLocationsId) {
       const coordenates = await new Promise((resolve, reject) => {
-        clientStandardTwitter('get',`geo/id/${location.geo.place_id}`, {}, (error, tweets, response) => {
+        clientStandardTwitter('get',`geo/id/${location.geo.place_id}`, {}, (error, tweets) => {
           if (tweets && !error) resolve(tweets)
           else reject(error)
         })
