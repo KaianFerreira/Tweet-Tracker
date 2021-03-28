@@ -3,12 +3,15 @@ import Twitter from 'twitter'
 import uuid from 'uuid'
 
 //use for standard v1.1 twitter api
-const clientTwitter = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: '1375660968399757313-R6vRArllxTldjTV8WnSY4flnGUqCYb',
-  access_token_secret: 'eKsLhP2U6sfiBiReiS7KqwwUhGKlVPcdMnazICWnK9hnt'
-})
+const clientStandardTwitter = (method, path, params, callback) => {
+  const api = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: '1375660968399757313-R6vRArllxTldjTV8WnSY4flnGUqCYb',
+    access_token_secret: 'eKsLhP2U6sfiBiReiS7KqwwUhGKlVPcdMnazICWnK9hnt'
+  })
+  return api[method](path, params, callback)
+}
 
 
 // use for user based app v2 twitter api
@@ -42,20 +45,6 @@ const clientTwitterV2 = (method, path = '/tweets/search/recent', config) => {
   return api[method](`${path}`, config)
 }
 
-const getLocalization = async (localId) => {
-  try {
-    const localization = new Promise((resolve, reject) => {
-      clientTwitter.get(`geo/id/${localId}`, {}, (error, tweets, response) => {
-        resolve(response)
-        reject(error)
-      })
-    })
-    return localization.centroid
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 // get bearer token for renew porpuses
 const getBearerToken = async () => {
   try {
@@ -76,8 +65,7 @@ const getBearerToken = async () => {
 }
 
 export {
-  getLocalization,
-  clientTwitter,
+  clientStandardTwitter,
   clientTwitterV2,
   clientUserTwitterV2,
   getBearerToken
