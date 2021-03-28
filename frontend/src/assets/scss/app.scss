@@ -1,0 +1,14 @@
+@import "fonts.scss";
+@import "_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Draft B';
+}
+
+#app {
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
