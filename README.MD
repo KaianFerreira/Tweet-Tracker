@@ -36,12 +36,12 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
+<!--Tabela de conteúdo -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary> Tabela de conteúdo</summary>
   <ol>
     <li>
-      <a href="#sobre-o-projeto">Sobre o projeto/a>
+      <a href="#sobre-o-projeto">Sobre o projeto</a>
       <ul>
         <li><a href="#feito-com">Feito com</a></li>
       </ul>
@@ -53,12 +53,10 @@
         <li><a href="#instalação">instalação</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#uso-do-projeto"> Uso do projeto</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#fontes-uteis">Fontes uteis</a></li>
   </ol>
 </details>
 
@@ -104,8 +102,6 @@ Criar um aplicação no [dashboard](https://developer.twitter.com/en/portal/dash
 ## Uso do projeto
 
 O intuito de uso do projeto é pesquisar por hashtags e receber suas respectivas localizações.
-
-_For more examples, plase refer to the [Documentation](https://example.com)_
 
 
 
