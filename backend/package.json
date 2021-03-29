@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "rm -rf dist && webpack && cp .env dist/ && cp package.json dist/ && cp -r migrations dist/ && cp knexfile.js dist/"
   },
   "keywords": [],
   "author": "",
