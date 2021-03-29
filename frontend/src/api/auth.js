@@ -1,6 +1,8 @@
 import api from '../libs/api'
+
+// singin url from the backend
 const twitterSignin = async () => {
-  window.open('http://localhost:3000/auth/twitter')
+  window.open('http://192.168.0.106:3000/auth/twitter')
 }
 
 const getUser = async () => {
