@@ -23,7 +23,8 @@ const clientUserTwitterV2 = (method, path = '/tweets/search/recent', config, use
     headers: {
       'Authorization': 'OAuth '+
         `oauth_consumer_key="${process.env.TWITTER_CONSUMER_KEY}",`+
-        `oauth_token="${userToken}",`+
+        `oauth_token="${userToken.oauth_token}",`+
+        `oauth_token_secret="${userToken.oauth_token_secret}",`+
         'oauth_signature_method="HMAC-SHA1",'+
         'oauth_version="1.0",'+
         `oauth_timestamp="${oauthTimestamp}",`+
@@ -32,6 +33,23 @@ const clientUserTwitterV2 = (method, path = '/tweets/search/recent', config, use
     }
   })
   return api[method](`${path}`, config)
+}
+
+// decode repsonse tokens from callback url
+const decodeClientTokens = async (oauthToken, oauthVerifier) => {
+  const { data } = await axios.get('https://api.twitter.com/oauth/access_token', {
+    params: {
+      oauth_token: oauthToken,
+      oauth_verifier: oauthVerifier
+    }
+  })
+  const params = new URLSearchParams(data)
+  return {
+    oauth_token: params.get('oauth_token'),
+    oauth_token_secret: params.get('oauth_token_secret'),
+    user_id: params.get('user_id'),
+    screen_name: params.get('screen_name')
+  }
 }
 
 //use for standard v2 twitter api
@@ -66,6 +84,7 @@ const getBearerToken = async () => {
 
 export {
   clientStandardTwitter,
+  decodeClientTokens,
   clientTwitterV2,
   clientUserTwitterV2,
   getBearerToken

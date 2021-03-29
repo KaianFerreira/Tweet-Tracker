@@ -20,6 +20,7 @@ import tweet from './routes/tweet/routes.js'
 
 console.log(`[${new Date().toLocaleString('pt-br')} Starting Tweet Tracker]`)
 const app = express()
+// middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
