@@ -1,12 +1,25 @@
 import api from './api'
+import { getUser } from '../api/auth'
 
 const sessionName = 'tweetTrackerSession'
 
-const setToken = (token) => {
-  localStorage.setItem(sessionName, JSON.stringify(token))
-  api.defaults.headers.Authorization = `Bearer ${token}`
+const getToken = () => JSON.parse(localStorage.getItem(sessionName))
+
+// set header with encoded oauth token
+// then get the same oauth token but decoded
+const setToken = async (token) => {
+  api.defaults.headers.twitterAuth = JSON.stringify(token)
+  const data = await getUser()
+  api.defaults.headers.decodedCredentials = JSON.stringify(data)
+  localStorage.setItem(sessionName, JSON.stringify(data))
+}
+
+const removeToken = () => {
+  localStorage.removeItem(sessionName)
 }
 
 export {
-  setToken
+  getToken,
+  setToken,
+  removeToken
 }

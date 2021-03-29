@@ -5,6 +5,7 @@ import { clientTwitterV2, clientStandardTwitter } from '../config/twitter-api'
 
 const router = express.Router()
 
+// get all tweets with the hashtag
 router.get('/hashtag/:name', async (req, res) => {
   try {
     console.log('GET /tweet/hashtag/:name')
@@ -28,6 +29,8 @@ router.get('/hashtag/:name', async (req, res) => {
   }
 })
 
+
+// get all locations hashtags if they have
 router.get('/hashtag/:name/locations', async (req, res) => {
   try {
     console.log('GET /tweet/hashtag/:name/locations')
@@ -66,7 +69,6 @@ router.get('/hashtag/:name/locations', async (req, res) => {
       })
     }
     
-    console.log(locations)
     return res.send(locations)
 
   } catch (error) {
