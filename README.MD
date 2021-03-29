@@ -65,7 +65,6 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o Projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://prnt.sc/10yvd5l)
 
 Hoje em dia é comum empresas lançarem uma nova campanha de marketing através de hashtags(#). Com isso podemos mensurar o desempenho da campanha tal como os locais aos quais esta campanha esta sendo mais comentada utilizando este projeto.
 
